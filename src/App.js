@@ -13,7 +13,13 @@ function App() {
   }, [])
 
   async function handleAddRepository() {
-    // TODO
+    const newRepo = {
+      title: `Lorem ipsum ${Date.now()}`,
+      url: 'https://www.google.com.br',
+      techs: ['Node', 'React']
+    }
+    const response = await api.post('/repositories', newRepo);
+    setRepositories([...repositories, response.data]);
   }
 
   async function handleRemoveRepository(id) {
